@@ -4,6 +4,15 @@ cmake_minimum_required (VERSION 3.5)
 
 add_definitions(-std=c++11)
 
+OPTION(DEFINE_TWIDDLE
+  "Build the project with twiddling on"
+  OFF)
+
+IF(DEFINE_TWIDDLE)
+  MESSAGE("Adding Twiddle flag...")
+  ADD_DEFINITIONS(-DTWIDDLE)
+ENDIF(DEFINE_TWIDDLE)
+
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
