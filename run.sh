@@ -5,5 +5,5 @@
 #
 
 # Run PID controller
-cd ./temp
+cd ./build
 ./pid
