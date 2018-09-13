@@ -13,7 +13,7 @@
 cd `dirname $0`
 
 # Compile code.
-mkdir -p temp
-cd temp
+mkdir -p build
+cd build
 cmake ..
 make -j$(getconf _NPROCESSORS_ONLN) $*
