@@ -39,7 +39,7 @@ int main() {
   pid.Init(0.3, 0.003, 3.0);
 #else
   // This what twiddling gives me after a few rounds
-  pid.Init(0.179715, 0.00285, 4.5);
+  pid.Init(0.463185, 0.0045, 6.15);
 #endif
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
@@ -70,15 +70,19 @@ int main() {
           // Calculate steering value.
           steer_value = pid.TotalError();
 
+#ifndef TWIDDLE
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value
                     << std::endl;
+#endif
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
+#ifndef TWIDDLE
           std::cout << msg << std::endl;
+#endif
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
         }
       } else {

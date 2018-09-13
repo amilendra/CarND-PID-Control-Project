@@ -1,61 +1,56 @@
+$ ./run_twiddle.sh 
 Listening to port 4567
 Connected!!!
-better params found: best err: 18.6704 (P, I, D) : 0.3, 0.003, 3
+better params found: best err: 17.6338 (P, I, D) : 0.3, 0.003, 3
 params updated:  (P, I, D) : 0.3, 0.0045, 3
-better params found: best err: 5.05984 (P, I, D) : 0.3, 0.0045, 3
+better params found: best err: 4.72047 (P, I, D) : 0.3, 0.0045, 3
 params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-better params found: best err: 2.95317 (P, I, D) : 0.3, 0.0045, 4.5
+better params found: best err: 2.79029 (P, I, D) : 0.3, 0.0045, 4.5
 params updated:  (P, I, D) : 0.465, 0.0045, 4.5
-params updated:  (P, I, D) : 0.135, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 6.15
-params updated:  (P, I, D) : 0.3, 0.0045, 2.85
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-better params found: best err: 0.643924 (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.4485, 0.0045, 4.5
-params updated:  (P, I, D) : 0.1515, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 6.1335
-params updated:  (P, I, D) : 0.3, 0.0045, 2.8665
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-params updated:  (P, I, D) : 0.3, 0.00615, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-better params found: best err: 0.591537 (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 5.97015
-params updated:  (P, I, D) : 0.3, 0.00285, 3.02985
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.004665, 4.5
-params updated:  (P, I, D) : 0.3, 0.001035, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.43365, 0.00285, 4.5
-params updated:  (P, I, D) : 0.16635, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 5.82314
-params updated:  (P, I, D) : 0.3, 0.00285, 3.17686
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.0044835, 4.5
-params updated:  (P, I, D) : 0.3, 0.0012165, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.3, 0.00285, 4.5
-params updated:  (P, I, D) : 0.420285, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
-better params found: best err: 0.377928 (P, I, D) : 0.179715, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00432015, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00137985, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
-params updated:  (P, I, D) : 0.312028, 0.00285, 4.5
-params updated:  (P, I, D) : 0.0474015, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 5.69082
-params updated:  (P, I, D) : 0.179715, 0.00285, 3.30918
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
-params updated:  (P, I, D) : 0.179715, 0.00285, 4.5
+better params found: best err: 1.38857 (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.00615, 4.5
+params updated:  (P, I, D) : 0.465, 0.00285, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.6465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
+better params found: best err: 0.737334 (P, I, D) : 0.2835, 0.0045, 4.5
+params updated:  (P, I, D) : 0.2835, 0.005985, 4.5
+params updated:  (P, I, D) : 0.2835, 0.003015, 4.5
+params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
+params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
+params updated:  (P, I, D) : 0.48315, 0.0045, 4.5
+params updated:  (P, I, D) : 0.08385, 0.0045, 4.5
+params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
+params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
+params updated:  (P, I, D) : 0.2835, 0.0045, 6.15
+better params found: best err: 0.727735 (P, I, D) : 0.2835, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+better params found: best err: 0.187364 (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0058365, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0031635, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.660838, 0.0045, 6.15
+params updated:  (P, I, D) : 0.265531, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 7.965
+params updated:  (P, I, D) : 0.463185, 0.0045, 4.335
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.00570285, 6.15
+params updated:  (P, I, D) : 0.463185, 0.00329715, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.641073, 0.0045, 6.15
+params updated:  (P, I, D) : 0.285297, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 7.7835
+params updated:  (P, I, D) : 0.463185, 0.0045, 4.5165
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.463185, 0.00558257, 6.15
+params updated:  (P, I, D) : 0.463185, 0.00341744, 6.15
+params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
