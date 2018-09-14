@@ -39,7 +39,11 @@ int main() {
   pid.Init(0.3, 0.003, 3);
 #else
   // This what twiddling gives me after a few rounds
-  pid.Init(0.465, 0.00537688, 4.5);
+  // pid.Init(0.465, 0.00537688, 4.5);
+
+  // However, the manually tuned parameters are much better.
+  // See REFLECTION.txt
+  pid.Init(0.125, 0.0005, 3.0);
 #endif
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
