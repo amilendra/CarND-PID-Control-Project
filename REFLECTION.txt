@@ -1,3 +1,79 @@
+Describe the effect each of the P, I, D components had in your implementation
+=============================================================================
+P = 0.0, I = 0.0, D = 0.0
+-------------------------
+Effectively the PID controller is disabled, and the car moves in a straight line
+until it goes over the curb.
+
+P = 1.0, I = 0.0, D = 0.0
+-------------------------
+First moves in a straight line, but then starts oscillating wildly.
+
+P = 0.5, I = 0.0, D = 0.0
+-------------------------
+First moves in a straight line, but then starts oscillating wildly.
+
+P = 0.5, I = 0.0, D = 1.0
+-------------------------
+Increasing the differential controller to reduce overshoot.
+Good improvement, but still there is considerable overshoot,
+so increasing D a bit more.
+
+P = 0.5, I = 0.0, D = 2.0
+-------------------------
+Much better, goes over the curb at the second turn but recovers.
+Maybe worth trying increasing D a notch further.
+
+P = 0.5, I = 0.0, D = 3.0
+-------------------------
+Keeps within the road, although there is a big oscillation at one of the turns.
+Trying D = 4.0 to reduce that.
+
+P = 0.5, I = 0.0, D = 4.0
+-------------------------
+Nothing significantly improves at this setting.
+Maybe it makes a bit worse when going along a straight line.
+Falling back to D = 3.0, and looking at the effects of I.
+
+P = 0.5, I = 1.0, D = 3.0
+-------------------------
+This basically reduced the effect of the differential controller.
+Went over the curb right at the start.
+The simulator does not have a fixed bias which is when I is needed.
+So will trying reducing this.
+
+P = 0.5, I = 0.5, D = 3.0
+-------------------------
+Same as before. Reducing it by a factor of 10.
+
+P = 0.5, I = 0.05, D = 3.0
+-------------------------
+Same thing, the speed also has reduced drastically.
+Reducing it futher by a factor of 10.
+
+P = 0.5, I = 0.005, D = 3.0
+---------------------------
+Considerable improvement. More control over the oscillations.
+Reducing it further to test the effect.
+
+P = 0.5, I = 0.0005, D = 3.0
+----------------------------
+Good, but oscillating at the turns.
+Trying reducing P a bit, 
+because I remember this also had an effect on the oscillations at the start.
+
+P = 0.25, I = 0.0005, D = 3.0
+-----------------------------
+Better, reducing P by half.
+
+P = 0.125, I = 0.0005, D = 3.0
+-----------------------------
+This is much better. 
+Not a lot of oscillations, keeps within the road.
+Takes the turns with more control than before.
+Settling for these settings.
+
+
 $ ./run_twiddle.sh 
 Listening to port 4567
 Connected!!!
