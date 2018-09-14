@@ -1,5 +1,6 @@
 Describe the effect each of the P, I, D components had in your implementation
 =============================================================================
+
 P = 0.0, I = 0.0, D = 0.0
 -------------------------
 Effectively the PID controller is disabled, and the car moves in a straight line
@@ -73,60 +74,129 @@ Not a lot of oscillations, keeps within the road.
 Takes the turns with more control than before.
 Settling for these settings.
 
+Describe how the final hyperparameters were chosen
+==================================================
+The above section on the effects of P, I and D settings ended up
+with parameters of a certain accuracy level.
+However I wanted to check what the twiddle algorithm would do,
+and started with {0, 0, 0} initial settings and used {1, 1, 1} for dp.
+This ended up with the car in the river in no time,
+and after thinking about it for a while I realized that,
+while it may work in the tutorials, because there is room for the vehicle
+to correct itself from extreme errors, due to the nature of the path,
+the car cannot just come back to track.
+So I had to start with initial parameters, that at least ensured that
+the car does not run out of the road.
+
+I chose {0.3, 0.003, 3.0} as the inital values.
+
+Even then, just using {1, 1, 1} as dp does not work,
+because it may end up giving minus values for the parameters,
+again resulting with irrecoverable deviations from the road.
+
+So I used half of the initial parameters as the value for dp.
+This ensures that the parameters will never go below zero,
+so should at least give values which are not much worse than the
+values we started with.
+
+Here is an example run of the twiddle algorithm.
 
 $ ./run_twiddle.sh 
 Listening to port 4567
 Connected!!!
-better params found: best err: 17.6338 (P, I, D) : 0.3, 0.003, 3
+better params found: best err: 28.0646 (P, I, D) : 0.3, 0.003, 3
 params updated:  (P, I, D) : 0.3, 0.0045, 3
-better params found: best err: 4.72047 (P, I, D) : 0.3, 0.0045, 3
+better params found: best err: 1.72712 (P, I, D) : 0.3, 0.0045, 3
 params updated:  (P, I, D) : 0.3, 0.0045, 4.5
-better params found: best err: 2.79029 (P, I, D) : 0.3, 0.0045, 4.5
+better params found: best err: 0.436593 (P, I, D) : 0.3, 0.0045, 4.5
 params updated:  (P, I, D) : 0.465, 0.0045, 4.5
-better params found: best err: 1.38857 (P, I, D) : 0.465, 0.0045, 4.5
+better params found: best err: 0.203381 (P, I, D) : 0.465, 0.0045, 4.5
 params updated:  (P, I, D) : 0.465, 0.00615, 4.5
 params updated:  (P, I, D) : 0.465, 0.00285, 4.5
 params updated:  (P, I, D) : 0.465, 0.0045, 4.5
 params updated:  (P, I, D) : 0.465, 0.0045, 4.5
 params updated:  (P, I, D) : 0.6465, 0.0045, 4.5
 params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
-better params found: best err: 0.737334 (P, I, D) : 0.2835, 0.0045, 4.5
-params updated:  (P, I, D) : 0.2835, 0.005985, 4.5
-params updated:  (P, I, D) : 0.2835, 0.003015, 4.5
-params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
-params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
-params updated:  (P, I, D) : 0.48315, 0.0045, 4.5
-params updated:  (P, I, D) : 0.08385, 0.0045, 4.5
-params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
-params updated:  (P, I, D) : 0.2835, 0.0045, 4.5
-params updated:  (P, I, D) : 0.2835, 0.0045, 6.15
-better params found: best err: 0.727735 (P, I, D) : 0.2835, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-better params found: best err: 0.187364 (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0058365, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0031635, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.660838, 0.0045, 6.15
-params updated:  (P, I, D) : 0.265531, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 7.965
-params updated:  (P, I, D) : 0.463185, 0.0045, 4.335
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.00570285, 6.15
-params updated:  (P, I, D) : 0.463185, 0.00329715, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.641073, 0.0045, 6.15
-params updated:  (P, I, D) : 0.285297, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 7.7835
-params updated:  (P, I, D) : 0.463185, 0.0045, 4.5165
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
-params updated:  (P, I, D) : 0.463185, 0.00558257, 6.15
-params updated:  (P, I, D) : 0.463185, 0.00341744, 6.15
-params updated:  (P, I, D) : 0.463185, 0.0045, 6.15
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 6.15
+params updated:  (P, I, D) : 0.465, 0.0045, 2.85
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.005985, 4.5
+params updated:  (P, I, D) : 0.465, 0.003015, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.62835, 0.0045, 4.5
+params updated:  (P, I, D) : 0.30165, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 5.985
+params updated:  (P, I, D) : 0.465, 0.0045, 3.015
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0058365, 4.5
+params updated:  (P, I, D) : 0.465, 0.0031635, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.612015, 0.0045, 4.5
+params updated:  (P, I, D) : 0.317985, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+better params found: best err: 0.189058 (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.00570285, 4.5
+params updated:  (P, I, D) : 0.465, 0.00329715, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.610545, 0.0045, 4.5
+params updated:  (P, I, D) : 0.319455, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 5.8365
+params updated:  (P, I, D) : 0.465, 0.0045, 3.1635
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.00558257, 4.5
+params updated:  (P, I, D) : 0.465, 0.00341744, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.59599, 0.0045, 4.5
+params updated:  (P, I, D) : 0.33401, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 5.70285
+params updated:  (P, I, D) : 0.465, 0.0045, 3.29715
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.00547431, 4.5
+params updated:  (P, I, D) : 0.465, 0.00352569, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.582891, 0.0045, 4.5
+params updated:  (P, I, D) : 0.347109, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.0045, 4.5
+better params found: best err: 0.183031 (P, I, D) : 0.465, 0.0045, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+better params found: best err: 0.16899 (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 5.58256
+params updated:  (P, I, D) : 0.465, 0.00537688, 3.41743
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00634144, 4.5
+params updated:  (P, I, D) : 0.465, 0.00441231, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.581712, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.348288, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 5.47431
+params updated:  (P, I, D) : 0.465, 0.00537688, 3.52569
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+params updated:  (P, I, D) : 0.465, 0.00624499, 4.5
+params updated:  (P, I, D) : 0.465, 0.00450877, 4.5
+params updated:  (P, I, D) : 0.465, 0.00537688, 4.5
+
+The better patameters found were, {0.465, 0.00537688, 4.5},
+which was not bad, but I feel manually tuning was more efficient
+in this route.

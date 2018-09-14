@@ -31,8 +31,8 @@ void PID::UpdateError(double cte) {
 #ifdef TWIDDLE
   static int idx = 0;
   static int step = 0;
-  static const int EVALUATE_STEPS = 200;
-  static const int IGNORE_STEPS = 100;
+  static const int IGNORE_STEPS = 0;
+  static const int EVALUATE_STEPS = 50;
   static double err = 0;
   static double best_err = std::numeric_limits<double>::max();
   static std::vector<double> p{Kp, Ki, Kd};

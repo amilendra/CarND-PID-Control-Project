@@ -36,10 +36,10 @@ int main() {
   // TODO: Initialize the pid variable.
 #ifdef TWIDDLE
   // This is what I started with twiddling
-  pid.Init(0.3, 0.003, 3.0);
+  pid.Init(0.3, 0.003, 3);
 #else
   // This what twiddling gives me after a few rounds
-  pid.Init(0.463185, 0.0045, 6.15);
+  pid.Init(0.465, 0.00537688, 4.5);
 #endif
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
